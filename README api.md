@@ -5,3 +5,6 @@
 - Hibernate
 - Maven
 - AWS
+
+## Relatórios:
+Através de trigger populara uma tabela para geração de relatórios
