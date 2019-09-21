@@ -33,6 +33,10 @@ public class EstabelecimentoController {
 
     @GetMapping(value = "/{id}")
     public ResponseEntity<Estabelecimento> findById (@PathVariable(name = "id") int id) {
+    	Estabelecimento estabelecimentoReturn = this.estabelecimentoService.findById(id);
+    	if(estabelecimentoReturn == null) {
+    		return new ResponseEntity<Estabelecimento>(HttpStatus.NOT_FOUND);
+    	}
         return ResponseEntity.ok(this.estabelecimentoService.findById(id));
     }
 

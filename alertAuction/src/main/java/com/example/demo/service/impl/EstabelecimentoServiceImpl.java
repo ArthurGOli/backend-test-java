@@ -27,7 +27,11 @@ public class EstabelecimentoServiceImpl implements EstabelecimentoService {
 
     @Override
     public Estabelecimento findById(int id) {
-        return estabelecimentoRepository.findById(id).get();
+        Optional<Estabelecimento> findById = estabelecimentoRepository.findById(id);
+        if(!findById.isPresent()){
+        	return null;
+        }
+		return findById.get();
     }
 
     @Override
