@@ -1,5 +1,7 @@
 package com.example.demo.data.model;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -34,6 +36,7 @@ public class Veiculo {
     		  generator = ObjectIdGenerators.PropertyGenerator.class, 
     		  property = "id")
 	private Estabelecimento estabelecimento;
+    private Date hrEntrada;
     
 	public Integer getId() {
 		return id;
@@ -77,4 +80,11 @@ public class Veiculo {
 	public void setEstabelecimento(Estabelecimento estabelecimento) {
 		this.estabelecimento = estabelecimento;
 	}
+	public Date getHrEntrada() {
+		return hrEntrada;
+	}
+	public void setHrEntrada(Date hrEntrada) {
+		this.hrEntrada = hrEntrada;
+	}
+	
 }

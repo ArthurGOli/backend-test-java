@@ -33,7 +33,11 @@ public class VeiculoController {
 
     @GetMapping(value = "/{id}")
     public ResponseEntity<Veiculo> findById (@PathVariable(name = "id") int id) {
-        return ResponseEntity.ok(this.veiculoService.findById(id));
+        Veiculo veiculoReturn = this.veiculoService.findById(id);
+        if(veiculoReturn == null) {
+        	return new ResponseEntity<Veiculo>(HttpStatus.NOT_FOUND);
+        }
+		return ResponseEntity.ok(veiculoReturn);
     }
 
     @PostMapping

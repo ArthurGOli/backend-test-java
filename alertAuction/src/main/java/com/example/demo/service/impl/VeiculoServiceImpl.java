@@ -1,6 +1,7 @@
 package com.example.demo.service.impl;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,11 +28,16 @@ public class VeiculoServiceImpl implements VeiculoService {
 
     @Override
     public Veiculo findById(int id) {
-        return veiculoRepository.findById(id).get();
+        Optional<Veiculo> findById = veiculoRepository.findById(id);
+        if(!findById.isPresent()) {
+        	return null;
+        }
+		return findById.get();
     }
 
     @Override
     public Veiculo save(Veiculo veiculo) {
+    	veiculo.setHrEntrada(new Date());
         return veiculoRepository.save(veiculo);
     }
 
