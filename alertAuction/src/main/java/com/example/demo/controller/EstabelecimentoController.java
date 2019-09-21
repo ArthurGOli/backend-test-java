@@ -47,7 +47,11 @@ public class EstabelecimentoController {
 
     @PutMapping(value = "/{id}")
     public ResponseEntity<Estabelecimento> getAll (@PathVariable(name = "id") int id, @RequestBody Estabelecimento estabelecimento) {
-        return ResponseEntity.ok(this.estabelecimentoService.update(id, estabelecimento));
+        Estabelecimento estabelecimentoReturn = this.estabelecimentoService.update(id, estabelecimento);
+        if(estabelecimentoReturn == null) {
+    		return new ResponseEntity<Estabelecimento>(HttpStatus.NOT_FOUND);
+    	}
+		return ResponseEntity.ok(estabelecimentoReturn);
     }
 
     @DeleteMapping(value = "/{id}")
