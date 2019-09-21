@@ -7,4 +7,4 @@
 - AWS
 
 ## Relatórios:
-Através de trigger populara uma tabela para geração de relatórios
+Através de trigger irá popular uma tabela para geração de relatórios
