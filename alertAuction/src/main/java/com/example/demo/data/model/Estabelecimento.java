@@ -1,10 +1,17 @@
 package com.example.demo.data.model;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
+
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 public class Estabelecimento {
@@ -19,6 +26,12 @@ public class Estabelecimento {
 	private String telefone;
 	private Integer qtdVagaCarro;
 	private Integer qtdVagaMoto;
+	
+	@OneToMany(mappedBy = "estabelecimento", cascade = CascadeType.ALL)
+	@JsonIdentityInfo(
+			  generator = ObjectIdGenerators.PropertyGenerator.class, 
+			  property = "id")
+	private Set<Veiculo> veiculos;
 	
 	public Integer getId() {
 		return id;
@@ -62,4 +75,11 @@ public class Estabelecimento {
 	public void setQtdVagaMoto(Integer qtdVagaMoto) {
 		this.qtdVagaMoto = qtdVagaMoto;
 	}
+	public Set<Veiculo> getVeiculos() {
+		return veiculos;
+	}
+	public void setVeiculos(Set<Veiculo> veiculos) {
+		this.veiculos = veiculos;
+	}
+	
 }
